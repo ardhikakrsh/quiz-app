@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/question.dart';
 import 'package:quiz_app/view/question_page.dart';
 import 'package:quiz_app/view/welcome_page.dart';
 
@@ -10,6 +11,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  final List<String> selectedAnswers = [];
   var activePage = 'welcome-page';
 
   void switchPage() {
@@ -18,12 +20,28 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        selectedAnswers.clear();
+        activePage = 'welcome-page';
+      });
+    } else {
+      setState(() {
+        activePage = 'question-page';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = WelcomePage(switchPage);
 
     if (activePage == 'question-page') {
-      screenWidget = const QuestionPage();
+      screenWidget = QuestionPage(
+        onSelectAnswer: chooseAnswer,
+      );
     }
 
     return MaterialApp(

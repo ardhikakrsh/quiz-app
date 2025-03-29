@@ -4,7 +4,12 @@ import 'package:quiz_app/components/answer_button.dart';
 import 'package:quiz_app/data/question.dart';
 
 class QuestionPage extends StatefulWidget {
-  const QuestionPage({super.key});
+  final void Function(String answer) onSelectAnswer;
+
+  const QuestionPage({
+    super.key,
+    required this.onSelectAnswer,
+  });
 
   @override
   State<QuestionPage> createState() => _QuestionPageState();
@@ -13,7 +18,8 @@ class QuestionPage extends StatefulWidget {
 class _QuestionPageState extends State<QuestionPage> {
   var currentQuestionIndex = 0;
 
-  answerQuestion() {
+  void answerQuestion(String selectedAnswers) {
+    widget.onSelectAnswer(selectedAnswers);
     setState(() {
       currentQuestionIndex++;
     });
@@ -47,7 +53,7 @@ class _QuestionPageState extends State<QuestionPage> {
               return AnswerButton(
                 answerText: answer,
                 onPressed: () {
-                  answerQuestion();
+                  answerQuestion(answer);
                 },
               );
             }),
