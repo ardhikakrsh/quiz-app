@@ -10,9 +10,17 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  var currentQuestionIndex = 0;
+
+  answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -34,7 +42,9 @@ class _QuestionPageState extends State<QuestionPage> {
             ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
-                onPressed: () {},
+                onPressed: () {
+                  answerQuestion();
+                },
               );
             }),
           ],
