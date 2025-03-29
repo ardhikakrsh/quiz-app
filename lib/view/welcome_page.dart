@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage(this.startQuiz, {super.key});
@@ -17,13 +18,15 @@ class WelcomePage extends StatelessWidget {
             width: 300,
             color: Color.fromARGB(150, 255, 255, 255),
           ),
-          const SizedBox(height: 30),
-          const Text(
-            'Girls Ask, Boys Answers!',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+          const SizedBox(height: 40),
+          Text(
+            'Ger Ready for a Flutter Quiz!',
+            style: GoogleFonts.lato(
+              textStyle: const TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(height: 10),
