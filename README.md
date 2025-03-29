@@ -1,4 +1,4 @@
-# Girls Asks, Boys Answers
+# Quiz App
 
 A new Flutter project.
 

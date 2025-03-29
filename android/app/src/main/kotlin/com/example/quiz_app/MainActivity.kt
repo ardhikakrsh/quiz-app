@@ -1,4 +1,4 @@
-package com.example.girls_asks_boys_answers
+package com.example.quiz_app
 
 import io.flutter.embedding.android.FlutterActivity
 
